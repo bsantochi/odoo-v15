@@ -2,17 +2,19 @@
     'name': 'Hospital Management',
     'version': '1.0.0',
     'category': 'Hospital',
-    'sequence': -100,
+    'sequence': -1,
     'author': 'Beitech',
     'summary': 'Hospital management system',
     'description': """
     Hospital management system
     """,
     'depends': [],
-    'data': [],
+    'data': [
+        'views/menu.xml',
+    ],
     'demo': [],
-    'aplication': True,
-    'auto_install': False,
+    'application': True,
+    'installable': False,
     'license': 'LGPL-3',
     'assets': {},
     
