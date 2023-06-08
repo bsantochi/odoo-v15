@@ -10,12 +10,11 @@
     """,
     'depends': [],
     'data': [
+        'views/patient_view.xml',
         'views/menu.xml',
     ],
     'demo': [],
     'application': True,
-    'installable': False,
+    'auto_install': False,
     'license': 'LGPL-3',
-    'assets': {},
-    
 }
