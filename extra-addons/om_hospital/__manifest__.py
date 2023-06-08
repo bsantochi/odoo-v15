@@ -10,6 +10,7 @@
     """,
     'depends': [],
     'data': [
+        'security/ir.model.access.csv',
         'views/patient_view.xml',
         'views/menu.xml',
     ],
