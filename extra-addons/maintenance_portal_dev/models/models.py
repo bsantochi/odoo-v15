@@ -1,18 +1,21 @@
 # -*- coding: utf-8 -*-
 
-# from odoo import models, fields, api
+from odoo import api, fields, models
 
 
-# class maintenance_portal_dev(models.Model):
-#     _name = 'maintenance_portal_dev.maintenance_portal_dev'
-#     _description = 'maintenance_portal_dev.maintenance_portal_dev'
+class CustomMaintenanceRequest(models.Model):
+    _inherit = "maintenance.request"
 
-#     name = fields.Char()
-#     value = fields.Integer()
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         for record in self:
-#             record.value2 = float(record.value) / 100
+    partner_id = fields.Many2one(
+        string="Usuario Portal Solicitante", comodel_name="res.partner", readonly=True
+    )
+
+    department_id = fields.Char(string="Departamento")
+    """ equipment_id = fields.Many2one(
+        string="Equipamiento", comodel_name="maintenance.equipment.category"
+    ) """
+
+    """ @api.onchange(equipment_id) """
+
+    def onchange_equipment_id(self):
+        self.department_id = self.equipment_id.department_id
