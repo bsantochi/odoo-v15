@@ -10,7 +10,7 @@
     'depends': ['product'],
     'data': [
         'data/gift_card_data.xml',
-        'views/views.xml',
+        'views/custom_views.xml',
         'security/ir.model.access.csv',
     ],
     'license': 'LGPL-3',

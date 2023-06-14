@@ -22,16 +22,22 @@
                     <group>
                         <group>
                             <field name="name"/>
+                            <field name="date_of_birth"/>
                             <field name="age"/>
                         </group>
                         <group>
                             <field name="ref"/>
                             <field name="gender"/>
                             <field name="active" invisible="1"/>
-
                         </group>
                     </group>
                 </sheet>
+                 <!-- Chatter -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
             </form>
         </field>
     </record>
@@ -49,8 +55,8 @@
                 <field name="age"/>
                 <filter name="filter_male" string="Male" domain="[('gender', '=', 'male')]"/>
                 <filter name="filter_female" string="Female" domain="[('gender', '=', 'female')]"/>
-                <separator/>
-                <filter name="filter_kids" string="Kids" domain="[('age', '&lt;=', '5')]"/>
+<!--                <separator/>-->
+<!--                <filter name="filter_kids" string="Kids" domain="[('age', '&lt;=', '5')]"/>-->
                  <separator/>
                 <filter name="filter_archived" string="Archived"
                         domain="[('active', '=', False)]"/>
@@ -59,6 +65,10 @@
                             context="{'group_by':'gender'}" help="Agrupar por Género"/>
 
                 </group>
+                <searchpanel>
+                        <field name="gender" string="Gender" icon="fa-building" select="multi"
+                               enable_counters="1"/>
+                </searchpanel>
             </search>
         </field>
     </record>
@@ -79,7 +89,7 @@
 
     <menuitem
         id="menu_patient"
-        name="Patient"
+        name="Patients"
         action="action_hospital_patient"
         parent="menu_patient_master"
         sequence="0" />
