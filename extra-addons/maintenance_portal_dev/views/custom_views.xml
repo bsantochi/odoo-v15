@@ -5,19 +5,40 @@
       <field name="model">maintenance.request</field>
       <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
       <field name="arch" type="xml">
+          <!--      # a -->
         <xpath expr="//field[@name='employee_id']" position="after">
           <field name="partner_id" />
 <!--          attrs="{'invisible': [('partner_id', '=', False)]}"-->
         </xpath>
+          <!--      # b -->
         <xpath expr="//field[@name='category_id']" position="after">
           <field name="department_id" />
           <!-- attrs="{'invisible': [('department_id', '=', False)]}" -->
         </xpath>
+          <!--      # c -->
         <xpath expr="//field[@name='user_id']" position="after">
           <field name="acting_user_ids" widget="many2many_tags"/>
           <!-- attrs="{'invisible': [('department_id', '=', False)]}" -->
         </xpath>
+          <!--      # e -->
+
+          <field name="priority" invisible="1"/>
+
+
+
       </field>
     </record>
+
+<!--      # d -->
+<!--     <record id="hr_equipment_request_view_tree" model="ir.ui.view">-->
+<!--        <field name="name">equipment.request.tree</field>-->
+<!--        <field name="model">maintenance.request</field>-->
+<!--        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_tree"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--          <xpath expr="//field[@name='category_id']" position="after">-->
+<!--            <field name="user_id" />-->
+<!--          </xpath>-->
+<!--      </field>-->
+<!--    </record>-->
   </data>
 </odoo>

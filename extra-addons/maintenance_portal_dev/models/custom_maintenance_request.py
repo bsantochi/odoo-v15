@@ -17,6 +17,12 @@ class CustomMaintenanceRequest(models.Model):
     equipment_department_id = fields.Many2one(
         string="EquiDep", related="equipment_id"
     )
+
+    def search_deparment(self):
+        department = self.env["hr.department"]
+        all_department = department.search([])
+        print("search()", all_department, all_department.name)
+
     department_id = fields.Many2one(string="Departamento", related="equipment_id")
 
     # @api.onchange(equipment_id)
@@ -27,6 +33,9 @@ class CustomMaintenanceRequest(models.Model):
     acting_user_ids = fields.Many2many('res.users', string="Ejecutantes")
                                        #, domain={[('maintenance_team_id', '=', 'True')]})
 
+    # d
+    user_id = fields.Many2one('res.users', string="Usuario informante")
+
     # e
-    # priority
-    # priority = fields.Selection(string="Priority", related="priority")
+    priority = fields.Selection([('0', 'Very Low'), ('1', 'Low'), ('2', 'Normal'), ('3', 'High')], string='Priority')
+

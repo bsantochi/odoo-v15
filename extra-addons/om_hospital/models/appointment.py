@@ -13,6 +13,17 @@ class HospitalAppointment(models.Model):
     booking_date = fields.Date(string='Booking Date', default=fields.Date.context_today)
     gender = fields.Selection(related='patient_id.gender')
     ref = fields.Char(string='Reference', readonly=True)
+    prescription = fields.Html(string='Prescription')
+    priority = fields.Selection([
+        ('0', 'Normal'),
+        ('1', 'Low'),
+        ('2', 'High'),
+        ('3', 'Very High')], string="Priority")
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('in_consultation', 'In Consultation'),
+        ('done', 'Done'),
+        ('cancel', 'Cancelled')], default="draft", string="Status", required=True)
 
     @api.onchange('patient_id')
     def onchange_patient_id(self):
