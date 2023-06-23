@@ -14,7 +14,9 @@
     "category": "Maintenance",
     "version": "0.1",
     # any module necessary for this one to work correctly
-    "depends": ["base", "maintenance", "hr"],
+    "depends": ["base", "maintenance", "base_maintenance", "maintenance_plan_activity",
+                "maintenance_plan", "maintenance_project", "maintenance_request_sequence",
+                "maintenance_timesheet", "helpdesk_mgmt", "helpdesk_type"],
     # always loaded
     "data": [
         # 'security/ir.model.access.csv',

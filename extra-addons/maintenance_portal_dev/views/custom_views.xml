@@ -12,33 +12,57 @@
         </xpath>
           <!--      # b -->
         <xpath expr="//field[@name='category_id']" position="after">
-          <field name="department_id" />
-          <!-- attrs="{'invisible': [('department_id', '=', False)]}" -->
+          <field name="department_id"
+           attrs="{'invisible': [('department_id', '=', False)]}"  />
         </xpath>
           <!--      # c -->
         <xpath expr="//field[@name='user_id']" position="after">
           <field name="acting_user_ids" widget="many2many_tags"/>
-          <!-- attrs="{'invisible': [('department_id', '=', False)]}" -->
+          <field name="team_member_ids" invisible="1"/>
         </xpath>
           <!--      # e -->
-
-          <field name="priority" invisible="1"/>
-
+        <field name="priority" position="attributes">
+        <attribute name="invisible">1</attribute>
+        </field>
+          <!--      # f -->
+        <xpath expr="//field[@name='maintenance_type']" position="after">
+          <field name="maintenance_priority"/>
+        </xpath>
 
 
       </field>
     </record>
 
 <!--      # d -->
-<!--     <record id="hr_equipment_request_view_tree" model="ir.ui.view">-->
-<!--        <field name="name">equipment.request.tree</field>-->
-<!--        <field name="model">maintenance.request</field>-->
-<!--        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_tree"/>-->
+
+<!--      <record id="hr_timesheet_line_tree" model="ir.ui.view">-->
+<!--            <field name="name">account.analytic.line.tree.hr_timesheet</field>-->
+<!--            <field name="model">account.analytic.line</field>-->
+<!--          <field name="model">maintenance.request</field>-->
+<!--        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>-->
 <!--        <field name="arch" type="xml">-->
-<!--          <xpath expr="//field[@name='category_id']" position="after">-->
 <!--            <field name="user_id" />-->
-<!--          </xpath>-->
 <!--      </field>-->
 <!--    </record>-->
+
+
+<!--    e-->
+    <record id="hr_equipment_request_view_kanban" model="ir.ui.view">
+        <field name="name">equipment.request.kanban</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_kanban_bottom_left')]/field[@name='priority']" position="attributes">
+<!--            <field name="priority" position="attributes">-->
+            <attribute name="invisible">1</attribute>
+<!--            </field>-->
+            </xpath>
+<!--            f-->
+          <xpath expr="//div[hasclass('oe_kanban_bottom_left')]" position="before">
+                <field name="maintenance_priority"/>
+            </xpath>
+         </field>
+    </record>
+
   </data>
 </odoo>
